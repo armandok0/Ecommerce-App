@@ -1,0 +1,70 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="0dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/Img_Best_Deal"
+            android:layout_width="79dp"
+            android:layout_height="72dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_deal_product_name"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Scotch Premium"
+            android:textColor="#000000"
+            android:textSize="9sp"
+            app:layout_constraintStart_toEndOf="@id/Img_Best_Deal"
+            app:layout_constraintTop_toTopOf="@id/Img_Best_Deal" />
+
+        <TextView
+            android:id="@+id/Deals_Product_Old_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="$2000"
+            android:textColor="#B0B0B0"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@id/Deals_Product_New_Price"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name" />
+
+        <TextView
+            android:id="@+id/Deals_Product_New_Price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$1600"
+            android:textColor="#000000"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/tv_deal_product_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_deal_product_name" />
+
+        <Button
+            android:id="@+id/Btn_See_Product"
+            android:layout_width="99dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="20dp"
+            android:text="See Product"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.554"
+            app:layout_constraintStart_toEndOf="@id/tv_deal_product_name"
+            app:layout_constraintTop_toTopOf="@id/tv_deal_product_name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
