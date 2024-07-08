@@ -55,11 +55,15 @@
             <!-- Color -->
             <TextView
                 android:id="@+id/textViewColor"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Color: "
                 android:textSize="14sp"
                 android:textColor="#333333"
-                android:text="Color: " />
+                android:drawablePadding="2dp"
+                android:drawableEnd="@drawable/cart_circle"
+                />
+
 
             <!-- Size -->
             <TextView

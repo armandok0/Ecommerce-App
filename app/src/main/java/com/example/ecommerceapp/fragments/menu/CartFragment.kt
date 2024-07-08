@@ -13,14 +13,16 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerceapp.R
-import com.example.ecommerceapp.data.Cart
 import com.example.ecommerceapp.adapters.CartAdapter
+import com.example.ecommerceapp.data.Cart
 import com.example.ecommerceapp.data.CartViewModel
+import com.example.ecommerceapp.data.OrderViewModel
 import java.text.DecimalFormat
 
 class CartFragment : Fragment(), CartAdapter.CartItemClickListener {
 
     private lateinit var cartViewModel: CartViewModel
+    private lateinit var orderViewModel: OrderViewModel
     private lateinit var cartAdapter: CartAdapter
     private lateinit var recyclerView: RecyclerView
     private lateinit var btnPlaceOrder: Button
@@ -41,20 +43,25 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         cartAdapter = CartAdapter(this)
         recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = cartAdapter
         }
+
         btnPlaceOrder.setOnClickListener {
-            cartViewModel.clearCart()
+            cartViewModel.placeOrderAndClearCart()
             Toast.makeText(requireContext(), "Order placed successfully!", Toast.LENGTH_SHORT).show()
         }
+
         observeViewModel()
     }
 
     private fun observeViewModel() {
         cartViewModel = ViewModelProvider(this).get(CartViewModel::class.java)
+        orderViewModel = ViewModelProvider(this).get(OrderViewModel::class.java)
+
         cartViewModel.allCartItems.observe(viewLifecycleOwner, Observer { cartItems ->
             if (cartItems.isEmpty()) {
                 showEmptyCartMessage()
@@ -85,7 +92,7 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickListener {
     }
 
     private fun updateTotalPrice(cartItems: List<Cart>) {
-        val totalPrice = cartItems.sumByDouble { (it.price * it.quantity).toDouble() }
+        val totalPrice = cartItems.sumByDouble { (it.price * it.quantity).toDouble() }.toFloat()
         val decimalFormat = DecimalFormat("#.##")
         textViewTotalPrice.text = "Total: ${decimalFormat.format(totalPrice)} $"
     }
@@ -104,10 +111,5 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickListener {
 
     override fun onDeleteItemClick(cartItem: Cart, position: Int) {
         cartViewModel.deleteCartItem(cartItem)
-    }
-
-    // Example method to add an item to the cart
-    private fun addToCart(cartItem: Cart) {
-        cartViewModel.addToCart(cartItem)
     }
 }

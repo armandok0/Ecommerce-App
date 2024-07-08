@@ -4,25 +4,22 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.example.ecommerceapp.data.Cart
-import com.example.ecommerceapp.data.CartDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CartViewModel(application: Application) : AndroidViewModel(application) {
 
     private val cartDao = CartDatabase.getDatabase(application).cartDao()
+    private val orderDao = OrderDatabase.getDatabase(application).orderDao()
     val allCartItems: LiveData<List<Cart>> = cartDao.getAllCartItemsLiveData()
 
     fun addToCart(cartItem: Cart) {
         viewModelScope.launch {
             val existingItem = cartDao.getCartItemByProductColorSize(cartItem.productName, cartItem.selectedColor, cartItem.selectedSize)
             if (existingItem != null) {
-                // Update quantity if item with same color and size exists
                 existingItem.quantity += cartItem.quantity
                 cartDao.updateCartItem(existingItem)
             } else {
-                // Insert new item if no matching item found
                 cartDao.insertCartItem(cartItem)
             }
         }
@@ -44,5 +41,23 @@ class CartViewModel(application: Application) : AndroidViewModel(application) {
         viewModelScope.launch {
             cartDao.clearCart()
         }
+    }
+
+    fun placeOrderAndClearCart() {
+        viewModelScope.launch(Dispatchers.IO) {
+            val cartItems = cartDao.getAllCartItems()
+            val totalPrice = calculateTotalPrice(cartItems)
+            val order = Order.fromCart(cartItems, totalPrice)
+            orderDao.insertOrder(order)
+            cartDao.clearCart()
+        }
+    }
+
+    private fun calculateTotalPrice(cartItems: List<Cart>): Float {
+        var totalPrice = 0f
+        for (cartItem in cartItems) {
+            totalPrice += cartItem.price * cartItem.quantity
+        }
+        return totalPrice
     }
 }

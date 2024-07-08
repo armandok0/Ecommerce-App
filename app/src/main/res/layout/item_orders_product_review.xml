@@ -1,0 +1,99 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="250dp"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:elevation="2dp"
+    android:layout_marginBottom="8dp">
+
+    <!-- Product Image -->
+    <ImageView
+        android:id="@+id/imageViewProductImage"
+        android:layout_width="181dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="4dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop" />
+
+    <!-- Product Name -->
+    <TextView
+        android:id="@+id/textViewProductName"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Product Name"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+
+    <!-- Product Price -->
+    <TextView
+        android:id="@+id/textViewProductPrice"
+        android:layout_width="161dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Price: $123.45"
+        android:textSize="12sp" />
+
+    <!-- Product Quantity -->
+    <TextView
+        android:id="@+id/textViewProductQuantity"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Quantity: 1"
+        android:textSize="12sp" />
+
+    <!-- Product Color -->
+    <TextView
+        android:id="@+id/textViewProductColor"
+        android:layout_width="163dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="Color: Red"
+        android:textSize="12sp" />
+
+    <!-- Product Size -->
+    <TextView
+        android:id="@+id/textViewProductSize"
+        android:layout_width="164dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:text="Size: M"
+        android:textSize="12sp" />
+
+    <!-- Rating Bar -->
+    <RatingBar
+        android:id="@+id/ratingBarProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:rating="0"
+        android:layout_marginBottom="4dp" />
+
+    <!-- Review Comment -->
+    <EditText
+        android:id="@+id/editTextReviewComment"
+        android:layout_width="224dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="?attr/editTextBackground"
+        android:gravity="top"
+        android:hint="Add your comment"
+        android:inputType="textMultiLine"
+        android:lines="2"
+        android:padding="6dp" />
+
+    <!-- Submit Review Button -->
+    <Button
+        android:id="@+id/btnSubmitReview"
+        android:layout_width="223dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:text="Submit Review"
+        android:textColor="@android:color/white"
+        android:textSize="14sp" />
+
+</LinearLayout>
