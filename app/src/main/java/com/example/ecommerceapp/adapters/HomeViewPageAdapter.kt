@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-// Adapter class for managing fragments in a ViewPager2
 class HomeViewPageAdapter(
     fragmentManager: FragmentManager,
     lifecycle: Lifecycle,

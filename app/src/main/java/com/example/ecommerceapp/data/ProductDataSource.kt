@@ -23,8 +23,8 @@ class ProductDataSource {
                 reviewRatings = listOf(4.5f, 5f, 3.5f), // Example review ratings
                 reviewComments = listOf(
                     "Very comfortable and stylish!",
-                    "Great sofa, but a bit expensive.",
-                    "Nice design, but could be more cushioned."
+                    "Great sofa but a bit expensive.",
+                    "Nice design but could be more cushioned."
                 )
             ),
             Product(
@@ -40,8 +40,8 @@ class ProductDataSource {
                 quantity = 5,
                 reviewRatings = listOf(4f, 4.5f), // Example review ratings
                 reviewComments = listOf(
-                    "Solid construction, but assembly was tricky.",
-                    "Beautiful table, fits perfectly in our dining room."
+                    "Solid construction but assembly was tricky.",
+                    "Beautiful table fits perfectly in our dining room."
                 )
             ),
             Product(

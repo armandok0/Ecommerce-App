@@ -26,7 +26,9 @@ import com.example.ecommerceapp.data.ProductViewModel
 import com.example.ecommerceapp.adapters.HomeColorsAdapter
 import com.example.ecommerceapp.adapters.HomeSizesAdapter
 import com.example.ecommerceapp.adapters.HomeViewerPager2Adapter
+import com.example.ecommerceapp.adapters.ReviewAdapter
 import kotlinx.coroutines.launch
+import java.util.Locale
 
 class ProductDetailsFragment : Fragment() {
 
@@ -36,6 +38,8 @@ class ProductDetailsFragment : Fragment() {
     private lateinit var colorsAdapter: HomeColorsAdapter
     private lateinit var sizesAdapter: HomeSizesAdapter
     private lateinit var viewPagerAdapter: HomeViewerPager2Adapter
+    private lateinit var reviewAdapter: ReviewAdapter
+    private lateinit var rvReviews: RecyclerView
     private lateinit var rvColors: RecyclerView
     private lateinit var rvSizes: RecyclerView
     private lateinit var viewPager: ViewPager2
@@ -58,12 +62,14 @@ class ProductDetailsFragment : Fragment() {
         val tvProductPrice: TextView = rootView.findViewById(R.id.tv_product_price)
         val tvProductDiscountedPrice: TextView = rootView.findViewById(R.id.tv_product_discounted_price)
         val tvProductDescription: TextView = rootView.findViewById(R.id.tv_product_description)
+        val tvOverallRatingValue: TextView = rootView.findViewById(R.id.tv_overall_rating_value)
         viewPager = rootView.findViewById(R.id.view_pager_product_images)
         rvColors = rootView.findViewById(R.id.rv_colors)
         rvSizes = rootView.findViewById(R.id.rv_sizes)
         btnAddToCart = rootView.findViewById(R.id.btn_add_to_cart)
         imgClose = rootView.findViewById(R.id.img_close)
         imgFavorite = rootView.findViewById(R.id.img_favorite)
+        rvReviews = rootView.findViewById(R.id.rv_user_reviews)
 
         val productId = arguments?.getInt("productId") ?: 0
 
@@ -75,6 +81,7 @@ class ProductDetailsFragment : Fragment() {
             tvProductName.text = product.name
             tvProductPrice.text = "$${String.format("%.2f", product.price)}"
             tvProductDescription.text = product.description
+            tvOverallRatingValue.text = String.format(Locale.US, "%.1f", product.getAverageRating())
 
             product.offerPercentage?.let { offer ->
                 val discountedPrice = product.price * (1 - offer / 100)
@@ -94,6 +101,7 @@ class ProductDetailsFragment : Fragment() {
             setupViewPager(product.imageResIds)
             setupColorsRecyclerView(product.colors)
             setupSizesRecyclerView(product.sizes)
+            setupReviewsRecyclerView(product.reviewRatings, product.reviewComments)
 
             btnAddToCart.setOnClickListener {
                 if (selectedColor == null) {
@@ -173,5 +181,12 @@ class ProductDetailsFragment : Fragment() {
         sizesAdapter.onItemClick = { size ->
             selectedSize = size
         }
+    }
+
+    private fun setupReviewsRecyclerView(reviewRatings: List<Float>, reviewComments: List<String>) {
+        val reviews = reviewRatings.zip(reviewComments)
+        reviewAdapter = ReviewAdapter(reviews)
+        rvReviews.layoutManager = LinearLayoutManager(requireContext())
+        rvReviews.adapter = reviewAdapter
     }
 }

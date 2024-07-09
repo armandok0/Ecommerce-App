@@ -21,4 +21,12 @@ data class Product(
     val quantity: Int,
     val reviewRatings: List<Float> = listOf(),
     val reviewComments: List<String> = listOf()
-)
+) {
+    fun getAverageRating(): Float {
+        if (reviewRatings.isEmpty()) {
+            return 0f
+        }
+        val sum = reviewRatings.sum()
+        return sum / reviewRatings.size
+    }
+}

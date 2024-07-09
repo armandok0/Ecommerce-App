@@ -38,11 +38,11 @@
             android:id="@+id/textViewLanguage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
             android:text="Language: English"
-            android:textSize="18sp"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
-            android:layout_marginBottom="8dp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <!-- Button to Change Language -->
         <com.google.android.material.button.MaterialButton
@@ -58,7 +58,7 @@
     <!-- Orders title -->
     <TextView
         android:id="@+id/textViewOrdersTitle"
-        android:layout_width="0dp"
+        android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:text="Orders"
         android:textSize="20sp"

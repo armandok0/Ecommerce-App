@@ -189,6 +189,16 @@
             app:layout_constraintEnd_toEndOf="@id/linear_product_preferences"
             android:layout_marginTop="20dp">
 
+            <TextView
+                android:id="@+id/ratings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews:"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                />
+
+
             <LinearLayout
                 android:id="@+id/linear_overall_rating"
                 android:layout_width="match_parent"
@@ -196,10 +206,12 @@
                 android:orientation="horizontal"
                 android:gravity="center_vertical">
 
+
                 <TextView
                     android:id="@+id/tv_overall_rating_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+
                     android:text="Overall Rating: "
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -212,32 +224,6 @@
                     android:text="4.4"
                     android:textSize="16sp"
                     android:textStyle="bold" />
-
-                <ImageView
-                    android:id="@+id/star1"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/home_start_filled" />
-                <ImageView
-                    android:id="@+id/star2"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/home_start_filled"/>
-                <ImageView
-                    android:id="@+id/star3"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/home_start_filled" />
-                <ImageView
-                    android:id="@+id/star4"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/home_start_filled" />
-                <ImageView
-                    android:id="@+id/star5"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/home_start_filled" />
 
             </LinearLayout>
 

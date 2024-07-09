@@ -56,15 +56,24 @@ class ProfileFragment : Fragment() {
         orderViewModel.allOrders.observe(viewLifecycleOwner) { orders ->
             adapter.submitList(orders)
         }
+        // Set click listener for Change Language button
+        binding.buttonChangeLanguage.setOnClickListener {
+            // Implement language change logic here
+            changeLanguage()
+        }
+    }
+
+    private fun changeLanguage() {
+        Toast.makeText(requireContext(), "Change Language button pressed!", Toast.LENGTH_SHORT).show()
+
     }
 
     private fun submitReview(productId: Int, rating: Float, comment: String) {
+
         // Define the observer
         val productObserver = Observer<Product> { product ->
             // Check if the review already exists
             if (isReviewAlreadyAdded(product, rating, comment)) {
-                showMessage("You have already submitted a review with the same rating and comment.")
-                // Re-enable UI element here if necessary
                 return@Observer
             }
 
@@ -91,9 +100,10 @@ class ProfileFragment : Fragment() {
             // Re-enable UI element here if necessary
         }
 
-        // Observe the product
-        productViewModel.getProductById(productId).observe(viewLifecycleOwner, productObserver)
+        // Attach observer to LiveData
+        productViewModel.getProductById(productId).observe(this, productObserver)
     }
+
 
 
     private fun isReviewAlreadyAdded(product: Product, rating: Float, comment: String): Boolean {

@@ -18,7 +18,11 @@ class ProductAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        val binding = ItemOrdersProductReviewBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemOrdersProductReviewBinding.inflate(
+            LayoutInflater.from(parent.context),
+            parent,
+            false
+        )
         return ProductViewHolder(binding)
     }
 
@@ -29,7 +33,8 @@ class ProductAdapter(
 
     override fun getItemCount(): Int = products.size
 
-    inner class ProductViewHolder(private val binding: ItemOrdersProductReviewBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ProductViewHolder(private val binding: ItemOrdersProductReviewBinding) :
+        RecyclerView.ViewHolder(binding.root) {
         private val imageViewProductImage = binding.imageViewProductImage
         private val textViewProductName = binding.textViewProductName
         private val textViewProductPrice = binding.textViewProductPrice
@@ -40,6 +45,24 @@ class ProductAdapter(
         private val editTextReviewComment = binding.editTextReviewComment
         private val btnSubmitReview = binding.btnSubmitReview
 
+        init {
+            // Set click listener for submit button
+            btnSubmitReview.setOnClickListener {
+                val position = adapterPosition
+                if (position != RecyclerView.NO_POSITION) {
+                    val product = products[position]
+                    val rating = ratingBarProduct.rating
+                    val comment = editTextReviewComment.text.toString()
+                    listener.onReviewSubmit(product.productId, rating, comment)
+
+                    // Disable button and comment editText after click
+                    btnSubmitReview.isEnabled = false
+                    editTextReviewComment.isEnabled = false
+                    ratingBarProduct.isEnabled = false
+                }
+            }
+        }
+
         fun bind(product: Cart) {
             // Bind product data to UI elements
             imageViewProductImage.setImageResource(product.imageResId)
@@ -48,27 +71,42 @@ class ProductAdapter(
             textViewProductQuantity.text = "Quantity: ${product.quantity}"
 
             // Set color and size information
-            val hexColor = product.selectedColor?.let { String.format("#%06X", 0xFFFFFF and it) } ?: "#000000"
+            val hexColor =
+                product.selectedColor?.let { String.format("#%06X", 0xFFFFFF and it) } ?: "#000000"
             textViewProductColor.text = "Color:"
 
             try {
                 val color = Color.parseColor(hexColor)
-                val circleDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
+                val circleDrawable =
+                    ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
                 circleDrawable?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
-                textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, circleDrawable, null)
+                textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null,
+                    null,
+                    circleDrawable,
+                    null
+                )
             } catch (e: IllegalArgumentException) {
                 // Handle error if color parsing fails
-                val circleDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
-                circleDrawable?.setColorFilter(Color.TRANSPARENT, PorterDuff.Mode.SRC_ATOP) // Transparent color
-                textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, circleDrawable, null)
+                val circleDrawable =
+                    ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
+                circleDrawable?.setColorFilter(
+                    Color.TRANSPARENT,
+                    PorterDuff.Mode.SRC_ATOP
+                ) // Transparent color
+                textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(
+                    null,
+                    null,
+                    circleDrawable,
+                    null
+                )
             }
             textViewProductSize.text = "Size: ${product.selectedSize}"
 
-            btnSubmitReview.setOnClickListener {
-                val rating = ratingBarProduct.rating
-                val comment = editTextReviewComment.text.toString()
-                listener.onReviewSubmit(product.productId, rating, comment)
-            }
+            // Ensure button and comment editText are enabled by default
+            ratingBarProduct.isEnabled = true
+            btnSubmitReview.isEnabled = true
+            editTextReviewComment.isEnabled = true
         }
     }
 }

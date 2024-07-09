@@ -25,6 +25,7 @@ class HomeBaseProductsAdapter(private val context: Context) :
         val tvPrice: TextView = itemView.findViewById(R.id.Product_Old_Price)
         val tvNewPrice: TextView = itemView.findViewById(R.id.Deals_Product_New_Price)
         val btnSeeProduct: Button = itemView.findViewById(R.id.Btn_See_The_Product)
+        val tvRating: TextView = itemView.findViewById(R.id.Product_Rating)
 
         init {
             btnSeeProduct.setOnClickListener {
@@ -62,6 +63,9 @@ class HomeBaseProductsAdapter(private val context: Context) :
             holder.tvNewPrice.visibility = View.GONE
             holder.tvPrice.paintFlags = 0
         }
+
+        val averageRating = product.getAverageRating()
+        holder.tvRating.text = String.format(Locale.US, "%.1f", averageRating)
 
         if (product.imageResIds.isNotEmpty()) {
             holder.imgProduct.setImageResource(product.imageResIds[0])
