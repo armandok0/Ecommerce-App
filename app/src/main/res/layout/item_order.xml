@@ -6,7 +6,6 @@
     android:elevation="2dp"
     android:layout_marginBottom="16dp">
 
-    <!-- Order Information -->
     <TextView
         android:id="@+id/textViewOrderDate"
         android:layout_width="match_parent"
@@ -25,8 +24,6 @@
         android:textStyle="bold"
         android:layout_marginBottom="8dp" />
 
-
-    <!-- Product Review Section -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewOrderProducts"
         android:layout_width="match_parent"
@@ -34,4 +31,6 @@
         android:overScrollMode="never"
         android:paddingBottom="8dp"
         android:scrollbars="vertical" />
+
+
 </LinearLayout>

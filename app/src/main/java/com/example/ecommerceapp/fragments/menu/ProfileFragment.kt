@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ecommerceapp.adapters.ProfileAdapter
 import com.example.ecommerceapp.data.OrderViewModel
+import com.example.ecommerceapp.data.Product
 import com.example.ecommerceapp.data.ProductViewModel
 import com.example.ecommerceapp.databinding.FragmentProfileBinding
 
@@ -50,15 +52,61 @@ class ProfileFragment : Fragment() {
         binding.recyclerViewOrders.adapter = adapter
         binding.recyclerViewOrders.layoutManager = LinearLayoutManager(requireContext())
 
-        // Observe LiveData from ViewModel
-        orderViewModel.allOrders.observe(viewLifecycleOwner, { orders ->
-            // Update the RecyclerView with new data
+
+        orderViewModel.allOrders.observe(viewLifecycleOwner) { orders ->
             adapter.submitList(orders)
-        })
+        }
     }
 
     private fun submitReview(productId: Int, rating: Float, comment: String) {
-        showMessage("Review submitted successfully!")
+        // Define the observer
+        val productObserver = Observer<Product> { product ->
+            // Check if the review already exists
+            if (isReviewAlreadyAdded(product, rating, comment)) {
+                showMessage("You have already submitted a review with the same rating and comment.")
+                // Re-enable UI element here if necessary
+                return@Observer
+            }
+
+            // Create updated lists
+            val updatedRatings = product.reviewRatings.toMutableList()
+            updatedRatings.add(rating)
+
+            val updatedComments = product.reviewComments.toMutableList()
+            updatedComments.add(comment)
+
+            // Create updated product
+            val updatedProduct = product.copy(
+                reviewRatings = updatedRatings,
+                reviewComments = updatedComments
+            )
+
+            // Update the product in the database
+            productViewModel.updateProduct(updatedProduct)
+
+            // Show success message
+            showMessage("Review submitted successfully!")
+
+
+            // Re-enable UI element here if necessary
+        }
+
+        // Observe the product
+        productViewModel.getProductById(productId).observe(viewLifecycleOwner, productObserver)
+    }
+
+
+    private fun isReviewAlreadyAdded(product: Product, rating: Float, comment: String): Boolean {
+        // Check if the review with the same rating and comment already exists
+        val existingRatings = product.reviewRatings
+        val existingComments = product.reviewComments
+
+        for (i in existingRatings.indices) {
+            if (existingRatings[i] == rating && existingComments[i] == comment) {
+                return true
+            }
+        }
+        return false
     }
 
     private fun showMessage(message: String) {

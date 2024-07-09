@@ -28,5 +28,11 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         return product
     }
 
+    fun updateProduct(product: Product) {
+        viewModelScope.launch(Dispatchers.IO) {
+            productDao.updateProduct(product)
+        }
+    }
+
 }
 

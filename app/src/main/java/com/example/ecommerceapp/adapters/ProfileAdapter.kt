@@ -7,15 +7,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerceapp.data.Order
 import com.example.ecommerceapp.databinding.ItemOrderBinding
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class ProfileAdapter(
     private val listener: ProfileItemClickListener,
-    private val reviewListener: ProductAdapter.ReviewSubmitListener
+    private val reviewSubmitListener: ProductAdapter.ReviewSubmitListener
 ) : RecyclerView.Adapter<ProfileAdapter.OrderViewHolder>() {
 
     interface ProfileItemClickListener {
-        // Define any interactions or callbacks here if needed
     }
+
 
     private var orders: List<Order> = emptyList()
 
@@ -42,14 +45,17 @@ class ProfileAdapter(
         private val recyclerViewOrderProducts = binding.recyclerViewOrderProducts
 
         fun bind(order: Order) {
-            textViewOrderDate.text = "Order Date: ${order.timestamp}"
+            val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+            val formattedDate = dateFormat.format(Date(order.timestamp))
+
+            textViewOrderDate.text = "Order Date: $formattedDate"
             textViewOrderTotal.text = "Total: $${order.totalPrice}"
 
             // Setup LinearLayoutManager for recyclerViewOrderProducts
             recyclerViewOrderProducts.layoutManager = LinearLayoutManager(itemView.context)
 
             // Setup RecyclerView for order products using ProductAdapter
-            val productAdapter = ProductAdapter(order.cartItems, reviewListener)
+            val productAdapter = ProductAdapter(order.cartItems, reviewSubmitListener)
             recyclerViewOrderProducts.adapter = productAdapter
         }
     }

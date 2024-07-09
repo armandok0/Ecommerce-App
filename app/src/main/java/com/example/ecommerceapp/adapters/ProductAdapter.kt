@@ -1,6 +1,10 @@
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommerceapp.R
 import com.example.ecommerceapp.data.Cart
 import com.example.ecommerceapp.databinding.ItemOrdersProductReviewBinding
 
@@ -42,7 +46,22 @@ class ProductAdapter(
             textViewProductName.text = product.productName
             textViewProductPrice.text = "Price: $${product.price}"
             textViewProductQuantity.text = "Quantity: ${product.quantity}"
-            textViewProductColor.text = "Color: ${product.selectedColor}"
+
+            // Set color and size information
+            val hexColor = product.selectedColor?.let { String.format("#%06X", 0xFFFFFF and it) } ?: "#000000"
+            textViewProductColor.text = "Color:"
+
+            try {
+                val color = Color.parseColor(hexColor)
+                val circleDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
+                circleDrawable?.setColorFilter(color, PorterDuff.Mode.SRC_ATOP)
+                textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, circleDrawable, null)
+            } catch (e: IllegalArgumentException) {
+                // Handle error if color parsing fails
+                val circleDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
+                circleDrawable?.setColorFilter(Color.TRANSPARENT, PorterDuff.Mode.SRC_ATOP) // Transparent color
+                textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, circleDrawable, null)
+            }
             textViewProductSize.text = "Size: ${product.selectedSize}"
 
             btnSubmitReview.setOnClickListener {

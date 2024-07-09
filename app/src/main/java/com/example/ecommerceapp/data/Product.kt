@@ -19,6 +19,6 @@ data class Product(
     val sizes: List<String>,
     val imageResIds: List<Int>,
     val quantity: Int,
-    val reviewRatings: List<Float> = listOf(), // List to store review ratings
-    val reviewComments: List<String> = listOf() // List to store review comments
+    val reviewRatings: List<Float> = listOf(),
+    val reviewComments: List<String> = listOf()
 )
