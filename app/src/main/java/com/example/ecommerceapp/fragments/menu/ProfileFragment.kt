@@ -1,3 +1,5 @@
+package com.example.ecommerceapp.fragments.menu
+
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.res.Configuration
