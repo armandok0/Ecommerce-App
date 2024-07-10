@@ -26,7 +26,7 @@
         app:layout_constraintStart_toEndOf="@id/imageViewProduct"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
-        android:text="Product Name" />
+        android:text="@string/product_name"/>
 
     <ImageView
         android:id="@+id/imgFavorite"
@@ -47,7 +47,7 @@
         app:layout_constraintStart_toEndOf="@id/imageViewProduct"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
-        android:text="Category" />
+        android:text="@string/category" />
 
     <TextView
         android:id="@+id/textViewPrice"
@@ -59,13 +59,13 @@
         app:layout_constraintStart_toEndOf="@id/imageViewProduct"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginStart="16dp"
-        android:text="Price" />
+        android:text="@string/price" />
 
     <Button
         android:id="@+id/btnSeeProduct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="See Product"
+        android:text="@string/see_product"
         android:textAllCaps="false"
         android:textSize="14sp"
         android:textColor="@android:color/white"

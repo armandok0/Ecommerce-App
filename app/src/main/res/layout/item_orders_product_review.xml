@@ -8,7 +8,6 @@
     android:gravity="center_horizontal"
     android:layout_marginBottom="8dp">
 
-    <!-- Product Image -->
     <ImageView
         android:id="@+id/imageViewProductImage"
         android:layout_width="235dp"
@@ -17,61 +16,55 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop" />
 
-    <!-- Product Name -->
     <TextView
         android:id="@+id/textViewProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:text="Product Name"
+        android:text="@string/product_name"
         android:textSize="16sp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Product Price -->
     <TextView
         android:id="@+id/textViewProductPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:text="Price: $123.45"
+        android:text="@string/price"
         android:textSize="12sp"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Product Quantity -->
     <TextView
         android:id="@+id/textViewProductQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:text="Quantity: 1"
+        android:text="@string/quantity"
         android:textSize="12sp"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Product Color -->
     <TextView
         android:id="@+id/textViewProductColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="2dp"
-        android:text="Color"
+        android:text="@string/color"
         android:drawableEnd="@drawable/cart_circle"
         android:textSize="12sp"
         android:gravity="center"
         android:layout_gravity="center_horizontal" />
 
 
-    <!-- Product Size -->
     <TextView
         android:id="@+id/textViewProductSize"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
-        android:text="Size: M"
+        android:text="@string/size"
         android:textSize="12sp"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Rating Bar -->
     <RatingBar
         android:id="@+id/ratingBarProduct"
         android:layout_width="wrap_content"
@@ -82,7 +75,6 @@
         android:layout_marginBottom="4dp"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Review Comment -->
     <EditText
         android:id="@+id/editTextReviewComment"
         android:layout_width="238dp"
@@ -90,20 +82,19 @@
         android:layout_marginBottom="8dp"
         android:background="?attr/editTextBackground"
         android:gravity="top"
-        android:hint="Add your comment"
+        android:hint="@string/add_your_comment"
         android:inputType="textMultiLine"
         android:lines="2"
         android:padding="6dp"
         android:layout_gravity="center_horizontal" />
 
-    <!-- Submit Review Button -->
     <Button
         android:id="@+id/btnSubmitReview"
         android:layout_width="235dp"
         android:layout_height="wrap_content"
         android:paddingHorizontal="16dp"
         android:paddingVertical="12dp"
-        android:text="Submit Review"
+        android:text="@string/submit_review"
         android:textColor="@android:color/white"
         android:textSize="14sp"
         android:layout_gravity="center_horizontal" />

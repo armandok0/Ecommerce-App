@@ -17,7 +17,7 @@
             android:id="@+id/tv_rating_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Rating:"
+            android:text="@string/rating"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -27,7 +27,7 @@
             android:id="@+id/tv_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5.0"
+            android:text="@string/_5_0"
             android:textSize="16sp"
             android:textColor="@android:color/black"
             android:drawablePadding="4dp" />
@@ -42,7 +42,7 @@
             android:id="@+id/tv_comment_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Comment:"
+            android:text="@string/comment"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@android:color/black"
@@ -53,7 +53,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="This is a review comment."
             android:textSize="14sp"
             android:textColor="@android:color/black" />
     </LinearLayout>

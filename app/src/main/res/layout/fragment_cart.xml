@@ -5,18 +5,16 @@
     android:orientation="vertical"
     android:padding="16dp">
 
-    <!-- Title: My Cart -->
     <TextView
         android:id="@+id/textViewCartTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cart"
+        android:text="@string/cart"
         android:gravity="center"
         android:textSize="24sp"
         android:textStyle="bold"
         />
 
-    <!-- Cart Items RecyclerView -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewCart"
         android:layout_width="match_parent"
@@ -27,23 +25,21 @@
         android:overScrollMode="never"
         android:scrollbars="vertical" />
 
-    <!-- Total Price -->
     <TextView
         android:id="@+id/textViewTotalPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total: $0.00"
+        android:text="@string/total_price"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@android:color/black"
         android:visibility="gone" />
 
-    <!-- Empty Cart Message -->
     <TextView
         android:id="@+id/textViewEmptyCart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No items found in cart. Add some products."
+        android:text="@string/no_items_found"
         android:textSize="18sp"
         android:textStyle="italic"
         android:gravity="center"
@@ -51,12 +47,11 @@
         android:paddingBottom="16dp"
         android:visibility="gone" />
 
-    <!-- Place Order Button -->
     <Button
         android:id="@+id/btnPlaceOrder"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Place Order"
+        android:text="@string/place_order"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginTop="16dp" />

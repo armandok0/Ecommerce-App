@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Favorites"
+        android:text="@string/favorites"
         android:textSize="24sp"
         android:textStyle="bold"
         />
@@ -22,12 +22,11 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"/>
 
-    <!-- Empty State TextView -->
     <TextView
         android:id="@+id/textViewEmptyState"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No favorite items found. Add some products!"
+        android:text="@string/no_favorite_items"
         android:textSize="18sp"
         android:textStyle="italic"
         android:gravity="center"

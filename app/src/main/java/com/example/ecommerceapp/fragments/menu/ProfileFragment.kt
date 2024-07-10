@@ -1,6 +1,8 @@
-package com.example.ecommerceapp.fragments.menu
-
+import android.content.Intent
+import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,12 +16,15 @@ import com.example.ecommerceapp.data.OrderViewModel
 import com.example.ecommerceapp.data.Product
 import com.example.ecommerceapp.data.ProductViewModel
 import com.example.ecommerceapp.databinding.FragmentProfileBinding
+import com.example.ecommerceapp.activities.MainActivity
+import java.util.Locale
 
 class ProfileFragment : Fragment() {
     private lateinit var orderViewModel: OrderViewModel
     private lateinit var productViewModel: ProductViewModel
     private lateinit var binding: FragmentProfileBinding
     private lateinit var adapter: ProfileAdapter
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,24 +57,50 @@ class ProfileFragment : Fragment() {
         binding.recyclerViewOrders.adapter = adapter
         binding.recyclerViewOrders.layoutManager = LinearLayoutManager(requireContext())
 
-
         orderViewModel.allOrders.observe(viewLifecycleOwner) { orders ->
-            adapter.submitList(orders)
+            if (orders.isEmpty()) {
+                binding.textViewNoOrders.visibility = View.VISIBLE
+                binding.recyclerViewOrders.visibility = View.GONE
+            } else {
+                binding.textViewNoOrders.visibility = View.GONE
+                binding.recyclerViewOrders.visibility = View.VISIBLE
+                adapter.submitList(orders)
+            }
         }
+
+
+        // Initialize SharedPreferences
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
         // Set click listener for Change Language button
         binding.buttonChangeLanguage.setOnClickListener {
-            // Implement language change logic here
-            changeLanguage()
+            // Toggle language
+            val currentLanguage = sharedPreferences.getString("app_language", "en")
+            val newLanguage = if (currentLanguage == "en") "el" else "en"
+            changeLanguage(newLanguage)
         }
     }
 
-    private fun changeLanguage() {
-        Toast.makeText(requireContext(), "Change Language button pressed!", Toast.LENGTH_SHORT).show()
+    private fun changeLanguage(languageCode: String) {
+        val locale = Locale(languageCode)
+        Locale.setDefault(locale)
+        val config = Configuration()
+        config.setLocale(locale)
+        requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
 
+        // Save the new language preference
+        with(sharedPreferences.edit()) {
+            putString("app_language", languageCode)
+            apply()
+        }
+
+        // Restart MainActivity to apply the language change
+        val intent = Intent(requireActivity(), MainActivity::class.java)
+        startActivity(intent)
+        requireActivity().finish()
     }
 
     private fun submitReview(productId: Int, rating: Float, comment: String) {
-
         // Define the observer
         val productObserver = Observer<Product> { product ->
             // Check if the review already exists
@@ -95,19 +126,13 @@ class ProfileFragment : Fragment() {
 
             // Show success message
             showMessage("Review submitted successfully!")
-
-
-            // Re-enable UI element here if necessary
         }
 
         // Attach observer to LiveData
         productViewModel.getProductById(productId).observe(this, productObserver)
     }
 
-
-
     private fun isReviewAlreadyAdded(product: Product, rating: Float, comment: String): Boolean {
-        // Check if the review with the same rating and comment already exists
         val existingRatings = product.reviewRatings
         val existingComments = product.reviewComments
 

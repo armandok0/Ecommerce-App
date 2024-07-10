@@ -8,7 +8,6 @@
     tools:context=".activities.MainActivity"
     android:background="@color/white">
 
-    
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/shoppingHostFragment"
         android:layout_width="match_parent"
@@ -38,6 +37,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
