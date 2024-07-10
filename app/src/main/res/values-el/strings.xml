@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Ecommerce App</string>
+    <string name="app_name">Εφαρμογή Ecommerce</string>
     <string name="home">Αρχική</string>
     <string name="search">Αναζήτηση</string>
     <string name="favorites">Αγαπημένα</string>
@@ -10,20 +10,20 @@
     <string name="_5_0">5.0</string>
     <string name="comment">Σχόλιο:</string>
     <string name="product_name">Όνομα Προϊόντος</string>
-    <string name="price">Τιμή: $123.45</string>
-    <string name="quantity">Ποσότητα: 1</string>
-    <string name="color">Χρώμα</string>
-    <string name="size">Μέγεθος: M</string>
+    <string name="price">Τιμή:</string>
+    <string name="quantity">Ποσότητα:</string>
+    <string name="color">Χρώμα:</string>
+    <string name="size">Μέγεθος:</string>
     <string name="submit_review">Υποβολή Κριτικής</string>
     <string name="add_your_comment">Προσθέστε το σχόλιό σας</string>
     <string name="order_date">Ημερομηνία Παραγγελίας:</string>
     <string name="total">Σύνολο:</string>
     <string name="category">Κατηγορία</string>
-    <string name="see_product">Δείτε το Προϊόν</string>
-    <string name="language">Γλώσσα: Ελληνικά</string>
+    <string name="see_product">Δείτε Προϊόν</string>
+    <string name="language">Γλώσσα: Αγγλικά</string>
     <string name="change_language">Αλλαγή Γλώσσας</string>
     <string name="orders">Παραγγελίες</string>
-    <string name="no_orders_found">Δεν βρέθηκαν παραγγελίες</string>
+    <string name="no_orders_found">Δεν βρέθηκαν παραγγελίες!</string>
     <string name="rating_2">4.4</string>
     <string name="old_price">$1600</string>
     <string name="new_price">$1600</string>
@@ -34,8 +34,8 @@
     <string name="best_products">Καλύτερα Προϊόντα</string>
     <string name="best_deals">Καλύτερες Προσφορές</string>
     <string name="search_products">Αναζήτηση Προϊόντων</string>
-    <string name="no_favorite_items">Δεν βρέθηκαν αγαπημένα αντικείμενα. Προσθέστε κάποια προϊόντα!</string>
-    <string name="total_price">Σύνολο: $0.00</string>
-    <string name="no_items_found">Δεν βρέθηκαν αντικείμενα στο καλάθι. Προσθέστε κάποια προϊόντα.</string>
+    <string name="no_favorite_items">Δεν βρέθηκαν αγαπημένα προϊόντα. Προσθέστε κάποια προϊόντα!</string>
+    <string name="total_price">Σύνολο:</string>
+    <string name="no_items_found">Δεν βρέθηκαν προϊόντα στο καλάθι. Προσθέστε κάποια προϊόντα!</string>
     <string name="place_order">Ολοκλήρωση Παραγγελίας</string>
 </resources>

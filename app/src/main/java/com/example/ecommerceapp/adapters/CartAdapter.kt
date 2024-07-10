@@ -68,8 +68,6 @@ class CartAdapter(private val listener: CartItemClickListener) :
 
             // Set color and size information
             val hexColor = cartItem.selectedColor?.let { String.format("#%06X", 0xFFFFFF and it) } ?: "#000000"
-            textViewColor.text = "Color:"
-
             try {
                 val color = Color.parseColor(hexColor)
                 val circleDrawable = ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
