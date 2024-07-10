@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Εφαρμογή Ecommerce</string>
+    <string name="app_name">Εφαρμογή Eccomerce</string>
     <string name="home">Αρχική</string>
     <string name="search">Αναζήτηση</string>
     <string name="favorites">Αγαπημένα</string>
@@ -15,7 +15,7 @@
     <string name="color">Χρώμα:</string>
     <string name="size">Μέγεθος:</string>
     <string name="submit_review">Υποβολή Κριτικής</string>
-    <string name="add_your_comment">Προσθέστε το σχόλιό σας</string>
+    <string name="add_your_comment">Προσθήκησχολίου</string>
     <string name="order_date">Ημερομηνία Παραγγελίας:</string>
     <string name="total">Σύνολο:</string>
     <string name="category">Κατηγορία</string>
@@ -44,4 +44,10 @@
     <string name="tab_chairs">Καρέκλες</string>
     <string name="tab_beds">Κρεβάτια</string>
     <string name="tab_decor">Διακόσμηση</string>
+    <string name="select_category">Επιλογή Κατηγορίας</string>
+    <string name="select_min_rating">Επιλογή Ελάχιστης Αξιολόγησης</string>
+    <string name="apply_filters">Εφαρμογή Φίλτρων</string>
+    <string name="max_price">Μέγιστη Τιμή</string>
+    <string name="min_rating">Ελάχιστη Αξιολόγηση</string>
+    <string name="no_products_found">Δεν βρέθηκαν προϊόντα!</string>
 </resources>

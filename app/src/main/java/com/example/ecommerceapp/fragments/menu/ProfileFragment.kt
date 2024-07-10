@@ -39,13 +39,10 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Initialize ViewModel
         orderViewModel = ViewModelProvider(requireActivity()).get(OrderViewModel::class.java)
         productViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
 
-        // Setup RecyclerView for Orders
         adapter = ProfileAdapter(object : ProfileAdapter.ProfileItemClickListener {
-            // Implement any interface methods if needed
         }, object : ProductAdapter.ReviewSubmitListener {
             override fun onReviewSubmit(productId: Int, rating: Float, comment: String) {
                 if (rating > 0 && comment.isNotBlank()) {
@@ -71,10 +68,8 @@ class ProfileFragment : Fragment() {
         }
 
 
-        // Initialize SharedPreferences
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
-        // Set click listener for Change Language button
         binding.buttonChangeLanguage.setOnClickListener {
             // Toggle language
             val currentLanguage = sharedPreferences.getString("app_language", "en")
@@ -90,47 +85,38 @@ class ProfileFragment : Fragment() {
         config.setLocale(locale)
         requireContext().resources.updateConfiguration(config, requireContext().resources.displayMetrics)
 
-        // Save the new language preference
         with(sharedPreferences.edit()) {
             putString("app_language", languageCode)
             apply()
         }
 
-        // Restart MainActivity to apply the language change
         val intent = Intent(requireActivity(), MainActivity::class.java)
         startActivity(intent)
         requireActivity().finish()
     }
 
     private fun submitReview(productId: Int, rating: Float, comment: String) {
-        // Define the observer
         val productObserver = Observer<Product> { product ->
-            // Check if the review already exists
             if (isReviewAlreadyAdded(product, rating, comment)) {
                 return@Observer
             }
 
-            // Create updated lists
             val updatedRatings = product.reviewRatings.toMutableList()
             updatedRatings.add(rating)
 
             val updatedComments = product.reviewComments.toMutableList()
             updatedComments.add(comment)
 
-            // Create updated product
             val updatedProduct = product.copy(
                 reviewRatings = updatedRatings,
                 reviewComments = updatedComments
             )
 
-            // Update the product in the database
             productViewModel.updateProduct(updatedProduct)
 
-            // Show success message
             showMessage("Review submitted successfully!")
         }
 
-        // Attach observer to LiveData
         productViewModel.getProductById(productId).observe(this, productObserver)
     }
 

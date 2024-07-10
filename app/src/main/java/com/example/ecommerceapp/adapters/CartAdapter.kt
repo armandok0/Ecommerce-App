@@ -66,7 +66,7 @@ class CartAdapter(private val listener: CartItemClickListener) :
             textViewPrice.text = "${cartItem.price} $"
             textViewQuantity.text = cartItem.quantity.toString()
 
-            // Set color and size information
+            // Set color
             val hexColor = cartItem.selectedColor?.let { String.format("#%06X", 0xFFFFFF and it) } ?: "#000000"
             try {
                 val color = Color.parseColor(hexColor)
@@ -82,9 +82,6 @@ class CartAdapter(private val listener: CartItemClickListener) :
 
             textViewSize.text = "Size: ${cartItem.selectedSize ?: "N/A"}"
         }
-
-
-
     }
 
     class CartDiffCallback : DiffUtil.ItemCallback<Cart>() {

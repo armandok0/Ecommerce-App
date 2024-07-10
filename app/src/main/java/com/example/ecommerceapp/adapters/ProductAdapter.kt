@@ -46,7 +46,6 @@ class ProductAdapter(
         private val btnSubmitReview = binding.btnSubmitReview
 
         init {
-            // Set click listener for submit button
             btnSubmitReview.setOnClickListener {
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
@@ -87,13 +86,13 @@ class ProductAdapter(
                     null
                 )
             } catch (e: IllegalArgumentException) {
-                // Handle error if color parsing fails
+                // Handle error
                 val circleDrawable =
                     ContextCompat.getDrawable(itemView.context, R.drawable.cart_circle)
                 circleDrawable?.setColorFilter(
                     Color.TRANSPARENT,
                     PorterDuff.Mode.SRC_ATOP
-                ) // Transparent color
+                )
                 textViewProductColor.setCompoundDrawablesRelativeWithIntrinsicBounds(
                     null,
                     null,
@@ -101,9 +100,9 @@ class ProductAdapter(
                     null
                 )
             }
+            
             textViewProductSize.text = "Size: ${product.selectedSize}"
 
-            // Ensure button and comment editText are enabled by default
             ratingBarProduct.isEnabled = true
             btnSubmitReview.isEnabled = true
             editTextReviewComment.isEnabled = true

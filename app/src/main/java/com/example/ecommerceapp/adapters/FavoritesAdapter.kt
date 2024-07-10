@@ -42,11 +42,11 @@ class FavoriteAdapter(private val onItemClick: (Int) -> Unit, private val onFavo
 
 
             btnSeeProduct.setOnClickListener {
-                onItemClick(favorite.productId) // Pass the product ID to the click listener
+                onItemClick(favorite.productId)
             }
 
             imgFavorite.setOnClickListener {
-                onFavoriteClick(favorite) // Handle favorite icon click
+                onFavoriteClick(favorite)
             }
         }
     }

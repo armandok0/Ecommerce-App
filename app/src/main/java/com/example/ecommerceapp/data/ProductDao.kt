@@ -29,6 +29,12 @@ interface ProductDao {
 
     @Update
     suspend fun updateProduct(product: Product)
+
+    @Query("""
+        SELECT * FROM Product 
+        WHERE (:category IS NULL OR category = :category)
+        AND (:maxPrice IS NULL OR price <= :maxPrice)
+        AND (:nameQuery IS NULL OR name LIKE '%' || :nameQuery || '%')
+    """)
+    fun getFilteredProducts(category: String?, maxPrice: Float?, nameQuery: String?): LiveData<List<Product>>
 }
-
-

@@ -17,7 +17,6 @@ class HomeSizesAdapter : RecyclerView.Adapter<HomeSizesAdapter.SizesViewHolder>(
     inner class SizesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val tvSize: TextView = itemView.findViewById(R.id.tvSize)
         private val imageShadow: ImageView = itemView.findViewById(R.id.imageShadow)
-        private val imageColor: ImageView = itemView.findViewById(R.id.imageColor)
 
         fun bind(size: String, position: Int) {
             tvSize.text = size

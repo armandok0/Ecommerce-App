@@ -41,10 +41,8 @@ class FavoritesFragment : Fragment() {
         textViewEmptyState = binding.findViewById(R.id.textViewEmptyState)
         recyclerViewFavorites = binding.findViewById(R.id.recyclerViewFavorites)
 
-        // Set up RecyclerView
         setupRecyclerView()
 
-        // Observe favorite items from ViewModel
         favoriteViewModel.allFavoriteItems.observe(viewLifecycleOwner) { favoriteItems ->
             if (favoriteItems.isEmpty()) {
                 textViewEmptyState.visibility = View.VISIBLE

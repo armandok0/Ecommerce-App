@@ -67,11 +67,7 @@ class HomeBaseProductsAdapter(private val context: Context) :
         val averageRating = product.getAverageRating()
         holder.tvRating.text = String.format(Locale.US, "%.1f", averageRating)
 
-        if (product.imageResIds.isNotEmpty()) {
-            holder.imgProduct.setImageResource(product.imageResIds[0])
-        } else {
-            // Set a placeholder image or handle empty case
-        }
+        holder.imgProduct.setImageResource(product.imageResIds[0])
     }
 
     override fun getItemCount(): Int {

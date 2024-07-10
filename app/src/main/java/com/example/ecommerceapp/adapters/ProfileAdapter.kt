@@ -51,10 +51,8 @@ class ProfileAdapter(
             textViewOrderDate.text = "Order Date: $formattedDate"
             textViewOrderTotal.text = "Total: $${order.totalPrice}"
 
-            // Setup LinearLayoutManager for recyclerViewOrderProducts
             recyclerViewOrderProducts.layoutManager = LinearLayoutManager(itemView.context)
 
-            // Setup RecyclerView for order products using ProductAdapter
             val productAdapter = ProductAdapter(order.cartItems, reviewSubmitListener)
             recyclerViewOrderProducts.adapter = productAdapter
         }

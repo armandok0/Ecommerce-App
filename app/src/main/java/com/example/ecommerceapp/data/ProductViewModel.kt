@@ -3,15 +3,12 @@ package com.example.ecommerceapp.data
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.ecommerceapp.data.Category
-import com.example.ecommerceapp.data.Product
-import com.example.ecommerceapp.data.ProductDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class ProductViewModel(application: Application) : AndroidViewModel(application) {
-
 
     private val productDao = ProductDatabase.getDatabase(application).productDao()
     val specialProducts: LiveData<List<Product>> = productDao.getFirstFiveProducts()
@@ -34,5 +31,17 @@ class ProductViewModel(application: Application) : AndroidViewModel(application)
         }
     }
 
-}
+    fun getFilteredProducts(category: String?, maxPrice: Float?, minRating: Float?, nameQuery: String?): LiveData<List<Product>> {
+        val result = MediatorLiveData<List<Product>>()
 
+        viewModelScope.launch(Dispatchers.Main) {
+            val source = productDao.getFilteredProducts(category, maxPrice, nameQuery)
+            result.addSource(source) { products ->
+                val filteredList = products.filter { it.getAverageRating() >= (minRating ?: 0f) }
+                result.value = filteredList
+            }
+        }
+
+        return result
+    }
+}

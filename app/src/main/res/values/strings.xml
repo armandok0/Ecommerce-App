@@ -44,4 +44,10 @@
     <string name="tab_chairs">Chairs</string>
     <string name="tab_beds">Beds</string>
     <string name="tab_decor">Decor</string>
+    <string name="select_category">Select Category</string>
+    <string name="select_min_rating">Select Min Rating</string>
+    <string name="apply_filters">Apply Filters</string>
+    <string name="max_price">Max Price</string>
+    <string name="min_rating">Min Rating</string>
+    <string name="no_products_found">No products found!</string>
 </resources>
