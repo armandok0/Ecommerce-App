@@ -38,4 +38,10 @@
     <string name="total_price">Total:</string>
     <string name="no_items_found">No items found in cart. Add some products!</string>
     <string name="place_order">Place Order</string>
+    <string name="tab_home">Home</string>
+    <string name="tab_sofas">Sofas</string>
+    <string name="tab_tables">Tables</string>
+    <string name="tab_chairs">Chairs</string>
+    <string name="tab_beds">Beds</string>
+    <string name="tab_decor">Decor</string>
 </resources>

@@ -20,7 +20,7 @@
     <string name="total">Σύνολο:</string>
     <string name="category">Κατηγορία</string>
     <string name="see_product">Δείτε Προϊόν</string>
-    <string name="language">Γλώσσα: Αγγλικά</string>
+    <string name="language">Γλώσσα: Ελληνικά</string>
     <string name="change_language">Αλλαγή Γλώσσας</string>
     <string name="orders">Παραγγελίες</string>
     <string name="no_orders_found">Δεν βρέθηκαν παραγγελίες!</string>
@@ -38,4 +38,10 @@
     <string name="total_price">Σύνολο:</string>
     <string name="no_items_found">Δεν βρέθηκαν προϊόντα στο καλάθι. Προσθέστε κάποια προϊόντα!</string>
     <string name="place_order">Ολοκλήρωση Παραγγελίας</string>
+    <string name="tab_home">Αρχική</string>
+    <string name="tab_sofas">Καναπέδες</string>
+    <string name="tab_tables">Τραπέζια</string>
+    <string name="tab_chairs">Καρέκλες</string>
+    <string name="tab_beds">Κρεβάτια</string>
+    <string name="tab_decor">Διακόσμηση</string>
 </resources>

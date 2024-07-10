@@ -53,16 +53,17 @@ class HomeFragment : Fragment() {
         viewPagerHome.adapter = viewPage2Adapter
 
         // Link
-        TabLayoutMediator(tabLayout, viewPagerHome) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Home"
-                1 -> "Sofas"
-                2 -> "Tables"
-                3 -> "Chairs"
-                4 -> "Beds"
-                5 -> "Decor"
-                else -> null
+        val tabLayoutMediator = TabLayoutMediator(tabLayout, viewPagerHome) { tab, position ->
+            when (position) {
+                0 -> tab.text = getString(R.string.tab_home)
+                1 -> tab.text = getString(R.string.tab_sofas)
+                2 -> tab.text = getString(R.string.tab_tables)
+                3 -> tab.text = getString(R.string.tab_chairs)
+                4 -> tab.text = getString(R.string.tab_beds)
+                5 -> tab.text = getString(R.string.tab_decor)
+                else -> tab.text = null
             }
-        }.attach()
+        }
+        tabLayoutMediator.attach()
     }
 }
