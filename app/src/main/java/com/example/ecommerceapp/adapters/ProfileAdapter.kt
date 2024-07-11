@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.ecommerceapp.R
 import com.example.ecommerceapp.data.Order
 import com.example.ecommerceapp.databinding.ItemOrderBinding
 import java.text.SimpleDateFormat
@@ -48,8 +49,8 @@ class ProfileAdapter(
             val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
             val formattedDate = dateFormat.format(Date(order.timestamp))
 
-            textViewOrderDate.text = "Order Date: $formattedDate"
-            textViewOrderTotal.text = "Total: $${order.totalPrice}"
+            textViewOrderDate.text = itemView.context.getString(R.string.order_date_text, formattedDate)
+            textViewOrderTotal.text = itemView.context.getString(R.string.total_price_text, order.totalPrice.toString())
 
             recyclerViewOrderProducts.layoutManager = LinearLayoutManager(itemView.context)
 

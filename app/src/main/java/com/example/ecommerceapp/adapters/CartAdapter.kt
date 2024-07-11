@@ -80,7 +80,9 @@ class CartAdapter(private val listener: CartItemClickListener) :
                 textViewColor.setCompoundDrawablesRelativeWithIntrinsicBounds(null, null, circleDrawable, null)
             }
 
-            textViewSize.text = "Size: ${cartItem.selectedSize ?: "N/A"}"
+            // Use string resource for size text
+            val sizeText = itemView.context.getString(R.string.size_text, cartItem.selectedSize ?: "N/A")
+            textViewSize.text = sizeText
         }
     }
 

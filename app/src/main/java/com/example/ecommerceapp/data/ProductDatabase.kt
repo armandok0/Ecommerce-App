@@ -36,5 +36,14 @@ abstract class ProductDatabase : RoomDatabase() {
                 getDatabase(context).productDao().insertProducts(products)
             }
         }
+
+        fun populateGreekDatabase(context: Context) {
+            val dataSource = ProductGreekDataSource()
+            val products = dataSource.getFurnitureProducts()
+
+            GlobalScope.launch(Dispatchers.IO) {
+                getDatabase(context).productDao().insertProducts(products)
+            }
+        }
     }
 }

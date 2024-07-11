@@ -50,4 +50,10 @@
     <string name="max_price">Max Price</string>
     <string name="min_rating">Min Rating</string>
     <string name="no_products_found">No products found!</string>
+    <string name="size_text">Size: %1$s</string>
+    <string name="total_text">Total: %1$s $</string>
+    <string name="quantity_text">Quantity: %1$d</string>
+    <string name="price_text">Price: $%1$s</string>
+    <string name="order_date_text">Order Date: %1$s</string>
+    <string name="total_price_text">Total: $%1$s</string>
 </resources>

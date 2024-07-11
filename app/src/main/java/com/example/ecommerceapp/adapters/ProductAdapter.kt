@@ -54,7 +54,6 @@ class ProductAdapter(
                     val comment = editTextReviewComment.text.toString()
                     listener.onReviewSubmit(product.productId, rating, comment)
 
-                    // Disable button and comment editText after click
                     btnSubmitReview.isEnabled = false
                     editTextReviewComment.isEnabled = false
                     ratingBarProduct.isEnabled = false
@@ -63,16 +62,13 @@ class ProductAdapter(
         }
 
         fun bind(product: Cart) {
-            // Bind product data to UI elements
             imageViewProductImage.setImageResource(product.imageResId)
             textViewProductName.text = product.productName
-            textViewProductPrice.text = "Price: $${product.price}"
-            textViewProductQuantity.text = "Quantity: ${product.quantity}"
-
+            textViewProductPrice.text = itemView.context.getString(R.string.price_text, product.price.toString())
+            textViewProductQuantity.text = itemView.context.getString(R.string.quantity_text, product.quantity)
             // Set color and size information
             val hexColor =
                 product.selectedColor?.let { String.format("#%06X", 0xFFFFFF and it) } ?: "#000000"
-            textViewProductColor.text = "Color:"
 
             try {
                 val color = Color.parseColor(hexColor)
@@ -100,8 +96,7 @@ class ProductAdapter(
                     null
                 )
             }
-            
-            textViewProductSize.text = "Size: ${product.selectedSize}"
+            textViewProductSize.text = itemView.context.getString(R.string.size_text, product.selectedSize ?: "N/A")
 
             ratingBarProduct.isEnabled = true
             btnSubmitReview.isEnabled = true

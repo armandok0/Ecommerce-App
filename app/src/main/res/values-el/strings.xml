@@ -15,7 +15,7 @@
     <string name="color">Χρώμα:</string>
     <string name="size">Μέγεθος:</string>
     <string name="submit_review">Υποβολή Κριτικής</string>
-    <string name="add_your_comment">Προσθήκησχολίου</string>
+    <string name="add_your_comment">Προσθήκη σχολίου</string>
     <string name="order_date">Ημερομηνία Παραγγελίας:</string>
     <string name="total">Σύνολο:</string>
     <string name="category">Κατηγορία</string>
@@ -50,4 +50,10 @@
     <string name="max_price">Μέγιστη Τιμή</string>
     <string name="min_rating">Ελάχιστη Αξιολόγηση</string>
     <string name="no_products_found">Δεν βρέθηκαν προϊόντα!</string>
+    <string name="size_text">Μέγεθος: %1$s</string>
+    <string name="total_text">Σύνολο: %1$s $</string>
+    <string name="quantity_text">Ποσότητα: %1$d</string>
+    <string name="price_text">Τιμή: $%1$s</string>
+    <string name="order_date_text">Ημερομινία Παραγγελίας: %1$s</string>
+    <string name="total_price_text">Σύνολο: $%1$s</string>
 </resources>

@@ -94,7 +94,10 @@ class CartFragment : Fragment(), CartAdapter.CartItemClickListener {
     private fun updateTotalPrice(cartItems: List<Cart>) {
         val totalPrice = cartItems.sumByDouble { (it.price * it.quantity).toDouble() }.toFloat()
         val decimalFormat = DecimalFormat("#.##")
-        textViewTotalPrice.text = "Total: ${decimalFormat.format(totalPrice)} $"
+        val formattedPrice = decimalFormat.format(totalPrice)
+
+        val totalText = getString(R.string.total_text, formattedPrice)
+        textViewTotalPrice.text = totalText
     }
 
     override fun onDecreaseQuantityClick(cartItem: Cart, position: Int) {

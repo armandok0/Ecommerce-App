@@ -91,9 +91,11 @@ class ProfileFragment : Fragment() {
         }
 
         val intent = Intent(requireActivity(), MainActivity::class.java)
+        intent.putExtra("new_language", languageCode)
         startActivity(intent)
         requireActivity().finish()
     }
+
 
     private fun submitReview(productId: Int, rating: Float, comment: String) {
         val productObserver = Observer<Product> { product ->

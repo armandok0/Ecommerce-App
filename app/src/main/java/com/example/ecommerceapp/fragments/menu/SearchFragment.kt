@@ -9,6 +9,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ecommerceapp.R
@@ -52,6 +53,13 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                         productsAdapter.submitList(products)
                     }
                 })
+        }
+
+        productsAdapter.onClick = { product ->
+            val bundle = Bundle().apply {
+                putInt("productId", product.id)
+            }
+            findNavController().navigate(R.id.productDetailsFragment, bundle)
         }
 
         val searchIcon = view.findViewById<ImageView>(R.id.searchIcon)

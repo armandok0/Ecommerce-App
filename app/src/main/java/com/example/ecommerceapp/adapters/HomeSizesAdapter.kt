@@ -22,7 +22,7 @@ class HomeSizesAdapter : RecyclerView.Adapter<HomeSizesAdapter.SizesViewHolder>(
             tvSize.text = size
             if (position == selectedPosition) {
                 imageShadow.visibility = View.VISIBLE
-            } else { // Size is not selected
+            } else {
                 imageShadow.visibility = View.INVISIBLE
             }
         }

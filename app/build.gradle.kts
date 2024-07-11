@@ -7,8 +7,6 @@ plugins {
     id("androidx.navigation.safeargs.kotlin")
 }
 
-
-
 android {
     namespace = "com.example.ecommerceapp"
     compileSdk = 34
@@ -66,21 +64,13 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-    //room
     implementation("androidx.room:room-ktx:2.6.1")
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
     implementation ("de.hdodenhof:circleimageview:3.1.0")
     kapt("androidx.room:room-compiler:2.6.1")
-
-
     implementation ("androidx.databinding:databinding-runtime:7.0.3")
-
-
-
     implementation("androidx.navigation:navigation-fragment-ktx:2.4.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.4.0")
-
     implementation("com.google.code.gson:gson:2.8.8")
-
 }
