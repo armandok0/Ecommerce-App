@@ -61,4 +61,4 @@ The application focuses on home furniture products. Detailed functionalities for
 
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/e-commerce-app.git
+   git clone https://github.com/armandok0/Ecommerce-App.git
